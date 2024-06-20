@@ -3,14 +3,14 @@ import { StyleSheet, View, Image } from 'react-native';
 
 /*todos os import */
 
-/*import 1*/import ImageViewer from './components/ImageViewer';
-/*import 2*/import Button from './components/Button';
+/*import 1*/import ImageViewer from '../../mctaina/components/ImageViewer';
+/*import 2*/import Button from '../../mctaina/components/Button';
 /*import 3*/import * as ImagePicker from 'expo-image-picker';
 /*import 4*/import { useState, useRef } from 'react';
-/*import 5*/import CircleButton from './components/CircleButton';
-/*import 6*/import IconButton from './components/IconButton';
-/*import 7*/import EmojiPicker from "./components/EmojiPicker";
-/*import 8*/import EmojiList from './components/EmojiList';
+/*import 5*/import CircleButton from '../../mctaina/components/CircleButton';
+/*import 6*/import IconButton from '../../mctaina/components/IconButton';
+/*import 7*/import EmojiPicker from "../../mctaina/components/EmojiPicker";
+/*import 8*/import EmojiList from '../../mctaina/components/EmojiList';
 /*import 9*/import { GestureHandlerRootView } from "react-native-gesture-handler";
 /*import 10*/
 import * as MediaLibrary from 'expo-media-library';
