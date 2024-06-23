@@ -1,16 +1,14 @@
 import { View, Image } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring }  from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
-    const translateX = useSharedValue(0);
+  const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
-    const scaleImage = useSharedValue(imageSize);
-    
-    const doubleTap = Gesture.Tap()
+  const scaleImage = useSharedValue(imageSize);
+
+  const doubleTap = Gesture.Tap()
   .numberOfTaps(2)
   .onStart(() => {
     if (scaleImage.value !== imageSize * 2) {
@@ -23,6 +21,12 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
       width: withSpring(scaleImage.value),
       height: withSpring(scaleImage.value),
     };
+  });
+
+  const drag = Gesture.Pan()
+  .onChange((event) => {
+    translateX.value += event.changeX;
+    translateY.value += event.changeY;
   });
 
   const containerStyle = useAnimatedStyle(() => {
@@ -38,13 +42,6 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
     };
   });
   
-  
-  const drag = Gesture.Pan()
-  .onChange((event) => {
-    translateX.value += event.changeX;
-    translateY.value += event.changeY;
-  });
-
   return (
     <GestureDetector gesture={drag}>
       <Animated.View style={[containerStyle, { top: -350 }]}>
@@ -57,5 +54,5 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
         </GestureDetector>
       </Animated.View>
     </GestureDetector>
-  );
+  )
 }
