@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "expo-calendar": "~13.0.5"
+  }
+}
